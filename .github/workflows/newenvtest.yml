@@ -1,0 +1,27 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+env:
+  NODE_ENV: production
+  PORT: 3000
+  DB_HOST: localhost
+  DB_PORT: 5432
+  DB_USER: user
+  DB_PASSWORD: password
+  DB_NAME: database
+
+jobs:
+  test:
+    environment: testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "Node environment: $NODE_ENV"
+          echo "Database Host: $DB_HOST"
+          echo "Database Name: $DB_NAME"
